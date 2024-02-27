@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "64.0.0"
+  alert_notification:
+    dependency: "direct main"
+    description:
+      name: alert_notification
+      sha256: e00d5038ea9b98e2a47e419548c4dfafe9cb32cdbe5a39fe26cca652f1939b2d
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   analyzer:
     dependency: transitive
     description:
