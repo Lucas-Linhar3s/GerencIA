@@ -41,6 +41,8 @@ dependencies:
   supabase: ^2.0.8
   supabase_flutter: ^2.3.4
   alert_notification: ^0.0.5
+  shared_preferences: ^2.2.2
+  build_runner: ^2.4.8
 
 dev_dependencies:
   flutter_test:

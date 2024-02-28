@@ -1,4 +1,7 @@
+import 'package:alert_notification/alert_notification.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:workspace/app/modules/login/presenter/store/login_store.dart';
 import 'package:workspace/app/modules/login/presenter/ui/widgets/card_login.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,6 +12,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  LoginStore loginStore = LoginStore();
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
@@ -37,25 +42,33 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       height: height < 800 ? 100 : 150,
                     ),
-                    CardLogin(),
+                    CardLogin(
+                      login: loginStore,
+                    ),
                     SizedBox(
                       height: height < 800 ? 0 : 110,
                     ),
                   ],
                 ),
-                // Align(
-                //   alignment: AlignmentDirectional.topEnd,
-                //   child: Container(
-                //     width: 400,
-                //     height: 100,
-                //     child: AlertNotification(
-                //       title: 'Falha na autenticação',
-                //       body: 'Email ou senha inválidos',
-                //       type: AlertNotificationType.success,
-                //       showLeadingStroke: true,
-                //     ),
-                //   ),
-                // ),
+                Observer(
+                  builder: (_) {
+                    return loginStore.errorMessage == ""
+                        ? Container()
+                        : Align(
+                            alignment: AlignmentDirectional.topEnd,
+                            child: Container(
+                              width: 400,
+                              height: 100,
+                              child: AlertNotification(
+                                title: 'Falha na autenticação',
+                                body: loginStore.errorMessage,
+                                type: AlertNotificationType.error,
+                                showLeadingStroke: true,
+                              ),
+                            ),
+                          );
+                  },
+                )
               ],
             ),
           ),

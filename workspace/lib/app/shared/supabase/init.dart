@@ -5,6 +5,8 @@ abstract class ISupabase {
   Future<AuthResponse> login(String email, String password);
   Future logout();
   PostgrestFilterBuilder<PostgrestList> select(String table, String columns);
+  PostgrestFilterBuilder<List<Map<String, dynamic>>> selectWhere(
+      String table, String columns, String columnWhere, String valueWhere);
   PostgrestFilterBuilder<dynamic> create(String table, Object values);
   PostgrestFilterBuilder<dynamic> update(
       String table, String id, Map<String, dynamic> values);
@@ -135,6 +137,32 @@ class SupabaseInit implements ISupabase {
         "",
         e.statusCode,
         "",
+      );
+    } catch (e) {
+      throw NetworkException(
+        e.toString(),
+        "",
+        "",
+        "",
+      );
+    }
+  }
+
+  @override
+  PostgrestFilterBuilder<List<Map<String, dynamic>>> selectWhere(
+      String table, String columns, String columnWhere, String valueWhere) {
+    try {
+      final se = _supabase.client
+          .from(table)
+          .select(columns)
+          .eq(columnWhere, valueWhere);
+      return se;
+    } on PostgrestException catch (e) {
+      throw NetworkException(
+        e.message,
+        e.hint,
+        e.code,
+        e.details,
       );
     } catch (e) {
       throw NetworkException(
