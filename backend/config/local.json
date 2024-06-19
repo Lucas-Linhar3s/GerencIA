@@ -1,0 +1,17 @@
+{
+"server": {
+  "port": ":8000"
+},
+"query_time_limit": 1,
+"databases": {
+  "nick": "",
+  "name": "",
+  "username": "",
+  "password": "",
+  "hostname": "",
+  "port": "",
+  "max_conn": 5,
+  "max_idle": 1,
+  "transaction_timeout": 1
+}
+}

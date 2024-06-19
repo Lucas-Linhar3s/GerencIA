@@ -1,0 +1,137 @@
+basePath: '{{.BasePath}}'
+definitions:
+  dtos.CardDTO:
+    properties:
+      atualizado_em:
+        type: string
+      criado_em:
+        type: string
+      id:
+        type: string
+      limite:
+        type: number
+      nome:
+        type: string
+    required:
+    - limite
+    - nome
+    type: object
+  responses.Response:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+      has_next:
+        type: boolean
+      message:
+        type: string
+      total:
+        type: integer
+    type: object
+host: localhost:8000
+info:
+  contact:
+    email: linhar3s77@gmail.com
+    name: Swagger API Support
+    url: http://www.swagger.io/support
+  description: Api GerencIA backend.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Api GerencIA backend
+  version: 1.0.0
+paths:
+  /card/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new card
+      parameters:
+      - description: Card Data
+        in: body
+        name: card
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.CardDTO'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "204": {}
+      summary: Create a new card
+      tags:
+      - cards
+  /card/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a card by ID
+      parameters:
+      - description: Card ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: Successfully deleted the card
+          schema:
+            $ref: '#/definitions/responses.Response'
+            type: object
+      summary: Delete a card by ID
+      tags:
+      - cards
+  /card/list:
+    get:
+      consumes:
+      - application/json
+      description: Get all cards
+      parameters:
+      - description: Query parameters
+        in: query
+        name: limit
+        type: integer
+      - description: Query parameters
+        in: query
+        name: offset
+        type: integer
+      - description: Query parameters
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.Response'
+            type: object
+      summary: Get all cards
+      tags:
+      - cards
+  /card/update:
+    patch:
+      consumes:
+      - application/json
+      description: Update a card
+      parameters:
+      - description: Card Data
+        in: body
+        name: card
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.CardDTO'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "204": {}
+      summary: Update a card
+      tags:
+      - cards
+swagger: "2.0"
