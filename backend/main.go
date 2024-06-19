@@ -18,7 +18,7 @@ import (
 // @contact.email  linhar3s77@gmail.com
 // @license.name  Apache 2.0
 // @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
-// @host      localhost:8000
+// @host      https://gerencia-v05a.onrender.com
 // @externalDocs.description  OpenAPI
 // @externalDocs.url          https://swagger.io/resources/open-api/
 func main() {

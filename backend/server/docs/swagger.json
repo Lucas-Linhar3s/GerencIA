@@ -15,7 +15,7 @@
         },
         "version": "1.0.0"
     },
-    "host": "localhost:8000",
+    "host": "https://gerencia-v05a.onrender.com",
     "basePath": "{{.BasePath}}",
     "paths": {
         "/card/create": {
