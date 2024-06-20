@@ -1,6 +1,6 @@
 import 'package:workspace/app/modules/cards/domain/exception/card_exception.dart';
 import 'package:workspace/app/modules/cards/infrastructure/datasource/i_card_datasource.dart';
-import 'package:workspace/app/shared/services/network/network_exception,dart';
+import 'package:workspace/app/shared/services/network/network_exception.dart';
 import 'package:workspace/app/shared/services/network/network_service.dart';
 
 class CardDatasourceImpl implements ICardDatasource {
@@ -22,29 +22,30 @@ class CardDatasourceImpl implements ICardDatasource {
     try {
       await _networkService.delete("/card/delete/${id}");
       return true;
- } on NetworkException catch (e) {
+    } on NetworkException catch (e) {
       throw CardException(e.message, e.stackTrace);
     }
-      }
+  }
 
   @override
-  Future<Map<String, dynamic>> Find(int limit, int amount, String? search) async {
+  Future<Map<String, dynamic>> Find(
+      int limit, int amount, String? search) async {
     try {
-      final result = await _networkService.get("/card/list?limit=${limit}&offset=${amount}&search=${search}");
+      final result = await _networkService
+          .get("/card/list?limit=${limit}&offset=${amount}&search=${search}");
       return result.data["data"];
- } on NetworkException catch (e) {
+    } on NetworkException catch (e) {
       throw CardException(e.message, e.stackTrace);
     }
-      }
+  }
 
   @override
   Future<bool> Update(Map<String, dynamic> json) async {
     try {
       await _networkService.patch("/card/update", data: json);
       return true;
- } on NetworkException catch (e) {
+    } on NetworkException catch (e) {
       throw CardException(e.message, e.stackTrace);
     }
-      }
-  
+  }
 }

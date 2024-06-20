@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:workspace/app/app_module.dart';
 import 'package:workspace/app/modules/cards/domain/repositories/i_card_repositories.dart';
 import 'package:workspace/app/modules/cards/domain/usecases/create/create_usecase_impl.dart';
 import 'package:workspace/app/modules/cards/domain/usecases/create/i_create_usecase.dart';
@@ -14,7 +15,7 @@ import 'package:workspace/app/modules/cards/infrastructure/repositories/card_rep
 import 'package:workspace/app/modules/cards/presenter/ui/page/card_page.dart';
 
 class CardModule extends Module {
-  @override 
+  @override
   void binds(i) {
     i.add<ICardRepository>(CardRepositoryImpl.new);
     i.add<IFindCardUsecases>(FindCardUsecaseImpl.new);
@@ -24,8 +25,8 @@ class CardModule extends Module {
     i.add<ICardDatasource>(CardDatasourceImpl.new);
   }
 
-@override
+  @override
   void routes(r) {
-    r.child(Modular.initialRoute, child: (ctx) =>CardPage());
+    r.child(Modular.initialRoute, child: (ctx) => CardPage());
   }
 }
