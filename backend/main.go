@@ -1,8 +1,11 @@
 package main
 
 import (
+	"flag"
 	"log"
 
+	"github.com/Lucas-Linhar3s/GerencIA/backend/pkg/jwt"
+	pkgLog "github.com/Lucas-Linhar3s/GerencIA/backend/pkg/log"
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/adapters/http/server"
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/config"
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/database"
@@ -27,15 +30,23 @@ func main() {
 	// Get the loaded configuration
 	conf := config.GetConfig()
 
+	var envConf = flag.String("conf", "./config/local.json", "config path, eg: -conf ./config/local.json")
+	flag.Parse()
+	confViper := config.NewConfig(*envConf)
+
 	// Open the database connection using the configuration
-	conn, err := database.Open(conf, "server/adapters/sqlite", true)
+	conn, err := database.Open(conf, "server/infrastructure/sqlite", true)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	di.ConfigDi(conn)
+	jwtJWT := jwt.NewJwt(confViper)
 
-	if err := server.InitServer(conf.Server.Port); err != nil {
+	di.ConfigDi(conn)
+	di.UserDi(conn, jwtJWT)
+	logger := pkgLog.NewLog(confViper)
+
+	if err := server.InitServer(conf.Server.Port, logger, jwtJWT, confViper); err != nil {
 		log.Fatal(err)
 	}
 }

@@ -13,5 +13,14 @@
   "max_conn": 5,
   "max_idle": 1,
   "transaction_timeout": 1
+},
+"security": {
+  "api_sign": {
+    "app_key": 123456,
+    "app_security": 123456
+  },
+  "jwt": {
+    "key": "QQYnRFerJTSEcrfB89fw8prOaObmrch8"
+  }
 }
 }
