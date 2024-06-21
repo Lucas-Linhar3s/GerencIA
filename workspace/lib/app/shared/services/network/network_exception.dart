@@ -1,29 +1,13 @@
-enum NetworkExceptionType {
-  connectTimeout,
-
-  sendTimeout,
-
-  receiveTimeout,
-
-  response,
-
-  cancel,
-
-  other,
-}
-
 class NetworkException implements Exception {
   final String message;
-  final StackTrace? stackTrace;
-  final int statusCode;
-  final NetworkExceptionType type;
+  final Map<String, dynamic>? logger;
+  final int? code;
   final dynamic data;
 
   NetworkException(
     this.message,
-    this.data, {
-    this.stackTrace,
-    required this.statusCode,
-    this.type = NetworkExceptionType.other,
-  });
+    this.logger,
+    this.code,
+    this.data,
+  );
 }

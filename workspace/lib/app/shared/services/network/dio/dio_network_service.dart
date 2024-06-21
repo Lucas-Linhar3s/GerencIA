@@ -31,11 +31,14 @@ class DioNetworkService implements NetworkService {
     } on DioException catch (e) {
       throw NetworkException(
         e.message!,
-        e.response?.data,
-        type: NetworkExceptionType.values
-            .firstWhere((type) => type.name == e.type.name),
-        statusCode: e.response?.statusCode ?? 500,
-        stackTrace: e.stackTrace,
+        Map<String, dynamic>.from({
+          "method": "${e.requestOptions.method}",
+          "path": "${e.requestOptions.baseUrl}${e.requestOptions.path}",
+          "statusCode": "${e.response!.statusCode}",
+          "data": "${e.response!.data}"
+        }),
+        e.response!.statusCode,
+        e.response!.data,
       );
     }
   }
@@ -65,11 +68,14 @@ class DioNetworkService implements NetworkService {
     } on DioException catch (e) {
       throw NetworkException(
         e.message!,
-        e.response?.data,
-        type: NetworkExceptionType.values
-            .firstWhere((type) => type.name == e.type.name),
-        statusCode: e.response?.statusCode ?? 500,
-        stackTrace: e.stackTrace,
+        Map<String, dynamic>.from({
+          "method": "${e.requestOptions.method}",
+          "path": "${e.requestOptions.baseUrl}${e.requestOptions.path}",
+          "statusCode": "${e.response!.statusCode}",
+          "data": "${e.response!.data}"
+        }),
+        e.response!.statusCode,
+        e.response!.data,
       );
     }
   }
@@ -95,11 +101,14 @@ class DioNetworkService implements NetworkService {
     } on DioException catch (e) {
       throw NetworkException(
         e.message!,
-        e.response?.data,
-        type: NetworkExceptionType.values
-            .firstWhere((type) => type.name == e.type.name),
-        statusCode: e.response?.statusCode ?? 500,
-        stackTrace: e.stackTrace,
+        Map<String, dynamic>.from({
+          "method": "${e.requestOptions.method}",
+          "path": "${e.requestOptions.baseUrl}${e.requestOptions.path}",
+          "statusCode": "${e.response!.statusCode}",
+          "data": "${e.response!.data}"
+        }),
+        e.response!.statusCode,
+        e.response!.data,
       );
     }
   }
@@ -121,11 +130,14 @@ class DioNetworkService implements NetworkService {
     } on DioException catch (e) {
       throw NetworkException(
         e.message!,
-        e.response?.data,
-        type: NetworkExceptionType.values
-            .firstWhere((type) => type.name == e.type.name),
-        statusCode: e.response?.statusCode ?? 500,
-        stackTrace: e.stackTrace,
+        Map<String, dynamic>.from({
+          "method": "${e.requestOptions.method}",
+          "path": "${e.requestOptions.baseUrl}${e.requestOptions.path}",
+          "statusCode": "${e.response!.statusCode}",
+          "data": "${e.response!.data}"
+        }),
+        e.response!.statusCode,
+        e.response!.data,
       );
     }
   }
@@ -147,11 +159,14 @@ class DioNetworkService implements NetworkService {
     } on DioException catch (e) {
       throw NetworkException(
         e.message!,
-        e.response?.data,
-        type: NetworkExceptionType.values
-            .firstWhere((type) => type.name == e.type.name),
-        statusCode: e.response?.statusCode ?? 500,
-        stackTrace: e.stackTrace,
+        Map<String, dynamic>.from({
+          "method": "${e.requestOptions.method}",
+          "path": "${e.requestOptions.baseUrl}${e.requestOptions.path}",
+          "statusCode": "${e.response!.statusCode}",
+          "data": "${e.response!.data}"
+        }),
+        e.response!.statusCode,
+        e.response!.data,
       );
     }
   }
@@ -171,11 +186,14 @@ class DioNetworkService implements NetworkService {
     } on DioException catch (e) {
       throw NetworkException(
         e.message!,
-        e.response?.data,
-        type: NetworkExceptionType.values
-            .firstWhere((type) => type.name == e.type.name),
-        statusCode: e.response?.statusCode ?? 500,
-        stackTrace: e.stackTrace,
+        Map<String, dynamic>.from({
+          "method": "${e.requestOptions.method}",
+          "path": "${e.requestOptions.baseUrl}${e.requestOptions.path}",
+          "statusCode": "${e.response!.statusCode}",
+          "data": "${e.response!.data}"
+        }),
+        e.response!.statusCode,
+        e.response!.data,
       );
     }
   }
@@ -197,11 +215,14 @@ class DioNetworkService implements NetworkService {
     } on DioException catch (e) {
       throw NetworkException(
         e.message!,
-        e.response?.data,
-        type: NetworkExceptionType.values
-            .firstWhere((type) => type.name == e.type.name),
-        statusCode: e.response?.statusCode ?? 500,
-        stackTrace: e.stackTrace,
+        Map<String, dynamic>.from({
+          "method": "${e.requestOptions.method}",
+          "path": "${e.requestOptions.baseUrl}${e.requestOptions.path}",
+          "statusCode": "${e.response!.statusCode}",
+          "data": "${e.response!.data}"
+        }),
+        e.response!.statusCode,
+        e.response!.data,
       );
     }
   }
@@ -223,11 +244,14 @@ class DioNetworkService implements NetworkService {
     } on DioException catch (e) {
       throw NetworkException(
         e.message!,
-        e.response?.data,
-        type: NetworkExceptionType.values
-            .firstWhere((type) => type.name == e.type.name),
-        statusCode: e.response?.statusCode ?? 500,
-        stackTrace: e.stackTrace,
+        Map<String, dynamic>.from({
+          "method": "${e.requestOptions.method}",
+          "path": "${e.requestOptions.baseUrl}${e.requestOptions.path}",
+          "statusCode": "${e.response!.statusCode}",
+          "data": "${e.response!.data}"
+        }),
+        e.response!.statusCode,
+        e.response!.data,
       );
     }
   }

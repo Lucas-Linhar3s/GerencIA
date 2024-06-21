@@ -12,8 +12,10 @@ class CardDatasourceImpl implements ICardDatasource {
     try {
       await _networkService.post("/card/create", data: json);
       return true;
-    } on NetworkException catch (e) {
-      throw CardException(e.message, e.stackTrace);
+    } on NetworkException catch (e, s) {
+      throw CardException(e.logger.toString(), s);
+    } catch (e, s) {
+      throw CardException("Error: 500 Internal Server Error", s);
     }
   }
 
@@ -22,20 +24,23 @@ class CardDatasourceImpl implements ICardDatasource {
     try {
       await _networkService.delete("/card/delete/${id}");
       return true;
-    } on NetworkException catch (e) {
-      throw CardException(e.message, e.stackTrace);
+    } on NetworkException catch (e, s) {
+      throw CardException(e.logger.toString(), s);
+    } catch (e, s) {
+      throw CardException("Error: 500 Internal Server Error", s);
     }
   }
 
   @override
-  Future<Map<String, dynamic>> Find(
-      int limit, int amount, String? search) async {
+  Future<dynamic> Find(int limit, int amount, String? search) async {
     try {
       final result = await _networkService
           .get("/card/list?limit=${limit}&offset=${amount}&search=${search}");
       return result.data["data"];
-    } on NetworkException catch (e) {
-      throw CardException(e.message, e.stackTrace);
+    } on NetworkException catch (e, s) {
+      throw CardException(e.logger.toString(), s);
+    } catch (e, s) {
+      throw CardException("Error: 500 Internal Server Error", s);
     }
   }
 
@@ -44,8 +49,10 @@ class CardDatasourceImpl implements ICardDatasource {
     try {
       await _networkService.patch("/card/update", data: json);
       return true;
-    } on NetworkException catch (e) {
-      throw CardException(e.message, e.stackTrace);
+    } on NetworkException catch (e, s) {
+      throw CardException(e.logger.toString(), s);
+    } catch (e, s) {
+      throw CardException("Error: 500 Internal Server Error", s);
     }
   }
 }

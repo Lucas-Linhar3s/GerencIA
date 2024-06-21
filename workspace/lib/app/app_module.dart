@@ -15,15 +15,14 @@ import 'package:workspace/app/modules/cards/infrastructure/datasource/i_card_dat
 import 'package:workspace/app/modules/cards/infrastructure/repositories/card_repository_impl.dart';
 import 'package:workspace/app/modules/cards/presenter/ui/page/card_page.dart';
 import 'package:workspace/app/shared/services/network/dio/dio_network_service.dart';
+import 'package:workspace/app/shared/services/network/dio/headers.dart';
 import 'package:workspace/app/shared/services/network/network_service.dart';
 
 class AppModule extends Module {
   @override
   void binds(i) {
     i.add<NetworkService>(DioNetworkService.new);
-    i.addInstance(Dio(BaseOptions(
-      baseUrl: "https://gerencia-v05a.onrender.com",
-    )));
+    i.addInstance<Dio>(ConfigDio.get());
     i.addInstance(CardModule().binds(i));
   }
 

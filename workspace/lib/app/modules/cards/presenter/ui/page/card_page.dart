@@ -21,8 +21,8 @@ class _CardPageState extends State<CardPage> {
           try {
             final result = await findUsecase.Find(10, 0, "");
             print(result);
-          } catch (e) {
-            print(e);
+          } on CardException catch (e) {
+            print(e.message);
           }
         },
       ),
