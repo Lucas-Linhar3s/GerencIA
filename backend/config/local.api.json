@@ -1,0 +1,27 @@
+{
+    "server": {
+      "port": ":8000"
+    },
+    "query_time_limit": 1,
+    "databases": {
+      "nick": "",
+      "name": "",
+      "username": "",
+      "password": "",
+      "hostname": "",
+      "port": "",
+      "max_conn": 5,
+      "max_idle": 1,
+      "transaction_timeout": 1
+    },
+    "security": {
+        "app_key": "6b93803c20876fd76dbdd0e15d6a0d69",
+        "app_security": "115d4abcebf22f28cced558aad29ca68",
+        "key": "QQYnRFerJTSEcrfB89fw8prOaObmrch8",
+        "max_session_time": 900
+    },
+    "integration_auth": [{
+      "username": "",
+      "password": ""
+    }]
+    }
