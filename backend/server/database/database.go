@@ -60,7 +60,7 @@ func Open(c *config.Config, dir string, driver string) (database *Database, err 
 		if err != nil {
 			log.Fatal(err)
 		}
-		path := filepath.Join(currentDir, fmt.Sprintf("%s/%s", dir, "/databaseApp.db"))
+		path := filepath.Join(currentDir, fmt.Sprintf("%s/%s", dir, "/databaseAPP.db"))
 
 		db, err = sql.Open("sqlite3", path)
 		if err != nil {

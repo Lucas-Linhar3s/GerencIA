@@ -6,6 +6,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/config"
+	v1 "github.com/Lucas-Linhar3s/GerencIA/backend/server/interfaces/v1"
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/middleware"
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/pkg/jwt"
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/pkg/log"
@@ -21,14 +22,15 @@ func InitServer(port string, logger *log.Logger,
 		middleware.CORSMiddleware(),
 		middleware.ResponseLogMiddleware(logger),
 		middleware.RequestLogMiddleware(logger),
-		middleware.SignMiddleware(logger, conf),
+		// middleware.SignMiddleware(logger, conf),
 	)
 
 	// Definir suas rotas com autenticação aqui
-	// api := r.Group("api").Use(
+	api := r.Group("api").Use(
 	// middleware.StrictAuth(jwt, logger),
-	// )
+	)
 	{
+		v1.Router(api)
 	}
 
 	// Configura o Swagger e rotas publicas

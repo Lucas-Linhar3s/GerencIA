@@ -1,5 +1,9 @@
 package responses
 
+import (
+	"fmt"
+)
+
 var (
 	// common errors
 	ErrSuccess             = newError(0, "ok")
@@ -11,3 +15,11 @@ var (
 	// more biz errors
 	ErrEmailAlreadyUse = newError(1001, "The email is already in use.")
 )
+
+// CheckError checks error
+func CheckError(msg string, err error) error {
+	if err != nil {
+		return fmt.Errorf("%s: %s", msg, err)
+	}
+	return nil
+}
