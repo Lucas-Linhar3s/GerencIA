@@ -65,7 +65,7 @@ func Delete(ctx *gin.Context, id *string) error {
 }
 
 // Find finds cards
-func Find(ctx *gin.Context, params map[string]interface{}) (*CardRes, error) {
+func Find(ctx *gin.Context, params map[string]interface{}) (*[]CardRes, error) {
 	const msg = "Error finding cards"
 
 	var (
@@ -81,9 +81,9 @@ func Find(ctx *gin.Context, params map[string]interface{}) (*CardRes, error) {
 		return nil, responses.ErrNotFound
 	}
 
-	var resp = CardRes{}
+	var resp = make([]CardRes, len(res))
 	for v := range res {
-		resp = CardRes{
+		resp[v] = CardRes{
 			ID:      res[v].ID,
 			Nome:    res[v].Nome,
 			Limite:  res[v].Limite,

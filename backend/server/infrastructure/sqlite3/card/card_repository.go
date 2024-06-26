@@ -28,9 +28,11 @@ func (r *SQCardRepository) Find(params map[string]interface{}) ([]CardModel, err
 		From("cartoes")
 
 	if params != nil {
+		p := params["Nome"].(*string)
+		search := "%" + *p + "%"
 		consulta = consulta.Where(sq.Or{
-			sq.Eq{"id": params["Id"]},
-			sq.Eq{"nome": params["Nome"]},
+			sq.Expr("id = ? COLLATE NOCASE", params["Id"]),
+			sq.Expr("nome LIKE ? COLLATE NOCASE", search),
 		})
 	}
 

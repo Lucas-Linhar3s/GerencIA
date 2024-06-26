@@ -17,3 +17,8 @@ type CardRes struct {
 	Created *time.Time
 	Updated *time.Time
 }
+
+type ParamsCard struct {
+	Id   *string `form:"id"`
+	Nome *string `form:"nome"`
+}

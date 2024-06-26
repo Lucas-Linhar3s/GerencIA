@@ -1,6 +1,10 @@
 package utils
 
-import "reflect"
+import (
+	"reflect"
+	"strings"
+	"unicode"
+)
 
 // Função para converter uma struct para map[string]interface{}
 func StructToMap(s interface{}) map[string]interface{} {
@@ -37,4 +41,15 @@ func MapToStruct(m map[string]interface{}, s interface{}) {
 			field.Set(reflect.ValueOf(value))
 		}
 	}
+}
+
+// Função para remover espaços e normalizar a capitalização
+func normalizeString(input string) string {
+	var normalized strings.Builder
+	for _, char := range input {
+		if !unicode.IsSpace(char) {
+			normalized.WriteRune(unicode.ToLower(char))
+		}
+	}
+	return normalized.String()
 }
