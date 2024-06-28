@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/interfaces/v1/card"
+	"github.com/Lucas-Linhar3s/GerencIA/backend/server/interfaces/v1/debt"
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/interfaces/v1/user"
 )
 
@@ -19,4 +20,9 @@ func Router(r gin.IRoutes) {
 	r.POST("v1/card/create", card.Create)
 	r.PATCH("v1/card/update", card.Update)
 	r.DELETE("v1/card/delete", card.Delete)
+	// Debt
+	r.GET("v1/debt/find", debt.Find)
+	r.POST("v1/debt/create", debt.Create)
+	r.PATCH("v1/debt/update", debt.Update)
+	r.DELETE("v1/debt/delete", debt.Delete)
 }
