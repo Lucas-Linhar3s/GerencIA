@@ -24,7 +24,7 @@ func main() {
 	confViper := viper.NewViper(*envConf)
 
 	// Open the database connection using the configuration
-	conn, err := database.Open(conf, "server/infrastructure/sqlite", "sqlite")
+	conn, err := database.Open(conf, "../../server/database/", "sqlite")
 	if err != nil {
 		log.Fatal(err)
 	}
