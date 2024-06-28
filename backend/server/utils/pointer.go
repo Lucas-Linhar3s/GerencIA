@@ -43,3 +43,7 @@ func FromTimePointer(ptr *time.Time) time.Time {
 func ToTimePointer(t time.Time) *time.Time {
 	return &t
 }
+
+func ToBoolPointer(b bool) *bool {
+	return &b
+}
