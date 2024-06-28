@@ -3,6 +3,7 @@ package v1
 import (
 	"github.com/gin-gonic/gin"
 
+	"github.com/Lucas-Linhar3s/GerencIA/backend/server/interfaces/v1/card"
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/interfaces/v1/user"
 )
 
@@ -13,4 +14,9 @@ func Router(r gin.IRoutes) {
 	r.POST("v1/user/create", user.Create)
 	r.PATCH("v1/user/update", user.Update)
 	r.DELETE("v1/user/delete", user.Delete)
+	//Card
+	r.GET("v1/card/find", card.Find)
+	r.POST("v1/card/create", card.Create)
+	r.PATCH("v1/card/update", card.Update)
+	r.DELETE("v1/card/delete", card.Delete)
 }

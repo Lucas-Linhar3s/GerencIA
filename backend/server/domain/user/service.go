@@ -5,6 +5,7 @@ import (
 
 	"github.com/google/uuid"
 
+	"github.com/Lucas-Linhar3s/GerencIA/backend/server/database"
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/utils"
 )
 
@@ -18,6 +19,9 @@ func GetService(user IUser) *Service {
 	return &Service{
 		repo: user,
 	}
+}
+func GetRepository(db *database.Database) IUser {
+	return newRepository(db)
 }
 
 // Find finds users

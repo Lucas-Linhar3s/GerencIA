@@ -5,12 +5,12 @@ import (
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/infrastructure/sqlite3/user"
 )
 
-type Repository struct {
+type repository struct {
 	repo *user.UserRepository
 }
 
-func NewRepository(db *database.Database) IUser {
-	return &Repository{
+func newRepository(db *database.Database) IUser {
+	return &repository{
 		repo: &user.UserRepository{
 			DB: db,
 		},
@@ -18,7 +18,7 @@ func NewRepository(db *database.Database) IUser {
 }
 
 // Create implements IUser.
-func (r *Repository) Create(req *UserModel) error {
+func (r *repository) Create(req *UserModel) error {
 	user := user.UserModel{
 		ID:        req.ID,
 		Name:      req.Name,
@@ -33,12 +33,12 @@ func (r *Repository) Create(req *UserModel) error {
 }
 
 // Delete implements IUser.
-func (r *Repository) Delete(id *string) error {
+func (r *repository) Delete(id *string) error {
 	return r.repo.Delete(id)
 }
 
 // Find implements IUser.
-func (r *Repository) Find(params map[string]interface{}) ([]UserModel, error) {
+func (r *repository) Find(params map[string]interface{}) ([]UserModel, error) {
 	res, err := r.repo.Find(params)
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (r *Repository) Find(params map[string]interface{}) ([]UserModel, error) {
 }
 
 // Update implements IUser.
-func (r *Repository) Update(req *UserModel) error {
+func (r *repository) Update(req *UserModel) error {
 	user := user.UserModel{
 		ID:        req.ID,
 		Name:      req.Name,

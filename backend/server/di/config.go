@@ -2,12 +2,15 @@ package di
 
 import (
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/database"
-	"github.com/Lucas-Linhar3s/GerencIA/backend/server/domain/user"
 	"github.com/Lucas-Linhar3s/GerencIA/backend/server/pkg/jwt"
 )
 
-var Repository user.IUser
+var db *database.Database
 
-func ConfigDI(db *database.Database, jwt *jwt.JWT) {
-	Repository = user.NewRepository(db)
+func ConfigDI(conn *database.Database, jwt *jwt.JWT) {
+	db = conn
+}
+
+func GetDatabase() *database.Database {
+	return db
 }

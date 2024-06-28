@@ -11,7 +11,7 @@ import (
 func Find(ctx *gin.Context, params map[string]interface{}) (*[]UserRes, error) {
 	const msg = "Error finding users"
 	var (
-		service = user.GetService(di.Repository)
+		service = user.GetService(user.GetRepository(di.GetDatabase()))
 	)
 
 	res, err := service.Find(params)
@@ -38,7 +38,7 @@ func Find(ctx *gin.Context, params map[string]interface{}) (*[]UserRes, error) {
 func Create(ctx *gin.Context, req *UserReq) error {
 	const msg = "Error creating user"
 	var (
-		service = user.GetService(di.Repository)
+		service = user.GetService(user.GetRepository(di.GetDatabase()))
 	)
 
 	user := user.UserModel{
@@ -55,7 +55,7 @@ func Create(ctx *gin.Context, req *UserReq) error {
 func Update(ctx *gin.Context, req *UserReq) error {
 	const msg = "Error updating user"
 	var (
-		service = user.GetService(di.Repository)
+		service = user.GetService(user.GetRepository(di.GetDatabase()))
 	)
 
 	user := user.UserModel{
@@ -73,7 +73,7 @@ func Update(ctx *gin.Context, req *UserReq) error {
 func Delete(ctx *gin.Context, id *string) error {
 	const msg = "Error deleting user"
 	var (
-		service = user.GetService(di.Repository)
+		service = user.GetService(user.GetRepository(di.GetDatabase()))
 	)
 
 	err := service.Delete(id)
