@@ -15,16 +15,16 @@ import (
 
 func main() {
 	// Load config file
-	config.LoadConfig("../../config")
+	config.LoadConfig("config")
 	// Get config struct
 	conf := config.GetConfig()
 
-	var envConf = flag.String("conf", "../../config/local.api.json", "config path, eg: -conf ../../config/local.api.json")
+	var envConf = flag.String("conf", "config/local.api.json", "config path, eg: -conf config/local.api.json")
 	flag.Parse()
 	confViper := viper.NewViper(*envConf)
 
 	// Open the database connection using the configuration
-	conn, err := database.Open(conf, "../../server/database/", "sqlite")
+	conn, err := database.Open(conf, "server/database/", "sqlite")
 	if err != nil {
 		log.Fatal(err)
 	}
