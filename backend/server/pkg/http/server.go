@@ -22,12 +22,12 @@ func InitServer(port string, logger *log.Logger,
 		middleware.CORSMiddleware(),
 		middleware.ResponseLogMiddleware(logger),
 		middleware.RequestLogMiddleware(logger),
-		// middleware.SignMiddleware(logger, conf),
 	)
 
 	// Definir suas rotas com autenticação aqui
 	api := r.Group("api").Use(
 	// middleware.StrictAuth(jwt, logger),
+		middleware.SignMiddleware(logger, conf),
 	)
 	{
 		v1.Router(api)
